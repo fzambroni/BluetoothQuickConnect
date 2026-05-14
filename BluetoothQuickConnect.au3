@@ -1,7 +1,7 @@
 #AutoIt3Wrapper_UseX64=y
 #AutoIt3Wrapper_UseUpx=n
 #AutoIt3Wrapper_Res_CompanyName=Fabricio Zambroni
-#AutoIt3Wrapper_Res_Fileversion=1.1.1.6
+#AutoIt3Wrapper_Res_Fileversion=1.1.1.8
 #AutoIt3Wrapper_Res_ProductVersion=1.0.0.0
 #AutoIt3Wrapper_Res_LegalCopyright=Copyright © 2026 Fabricio Zambroni
 #AutoIt3Wrapper_Icon=bt1.ico
@@ -305,7 +305,7 @@ Global $g_idPairNew = _CreateFlatButton("＋ Pair", 328, 302, 120, 32, $CLR_BG_C
 
 Global $g_idRefresh = _CreateFlatButton("↻ Refresh", 14, 342, 120, 28, $CLR_BG, $CLR_TEXT_DIM)
 Global $g_idExit = _CreateFlatButton("Exit", $WIN_W - 90, 342, 76, 28, $CLR_BG, $CLR_TEXT_DIM)
-$Label_DevBy = GUICtrlCreateLabel("Developed by Fabricio Zambroni", 30, $WIN_H - 45, $WIN_W - 44, 16)
+$Label_DevBy = GUICtrlCreateLabel("Developed by Fabricio Zambroni - Version: " & FileGetVersion(@ScriptFullPath), 30, $WIN_H - 45, $WIN_W - 44, 16)
 GUICtrlSetFont($Label_DevBy, 9, 400, 0, "Segoe UI")
 GUICtrlSetColor($Label_DevBy, $CLR_TEXT_DIM)
 GUICtrlSetBkColor($Label_DevBy, $CLR_BG)
