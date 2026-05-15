@@ -6,6 +6,22 @@
 ; COM error handler (catches $oConn.Execute failures instead of crashing)
 Global $g_oComErr = ObjEvent("AutoIt.Error", "_ComErrorHandler")
 Global $g_sLastComError = ""
+Global $GitHubAppName
+
+; ----------------------------------------------------------------------------------------------------------------------
+; Updater - GitHub based
+; ----------------------------------------------------------------------------------------------------------------------
+; This updater no longer uses a shared network folder. It reads the latest version from GitHub version.txt,
+; downloads the published Toolbox.exe only when a newer version is available, then lets Updater.exe replace the file.
+Global Const $g_sGitHubDefaultRawBase = "https://raw.githubusercontent.com/fzambroni/" & $GitHubAppName & "/main"
+Global $g_sGitHubRawBase = IniRead(@ScriptDir & "\settings.ini", "Update", "github_raw_base", $g_sGitHubDefaultRawBase)
+If StringStripWS($g_sGitHubRawBase, 3) = "" Then $g_sGitHubRawBase = $g_sGitHubDefaultRawBase
+
+; Keep settings.ini explicit and self-documenting. The old [Update] path entry is intentionally ignored.
+IniWrite(@ScriptDir & "\settings.ini", "Update", "source", "github")
+IniWrite(@ScriptDir & "\settings.ini", "Update", "github_raw_base", $g_sGitHubRawBase)
+
+
 
 Func _ComErrorHandler()
     Local $oErr = $g_oComErr

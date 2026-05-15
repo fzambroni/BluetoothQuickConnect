@@ -1,7 +1,7 @@
 #AutoIt3Wrapper_UseX64=y
 #AutoIt3Wrapper_UseUpx=n
 #AutoIt3Wrapper_Res_CompanyName=Fabricio Zambroni
-#AutoIt3Wrapper_Res_Fileversion=1.1.2.0
+#AutoIt3Wrapper_Res_Fileversion=1.1.2.1
 #AutoIt3Wrapper_Res_ProductVersion=1.1.1.1
 #AutoIt3Wrapper_Res_LegalCopyright=Copyright © 2026 Fabricio Zambroni
 #AutoIt3Wrapper_Icon=bt1.ico
@@ -25,7 +25,7 @@
 #include <SendMessage.au3>
 #include <Misc.au3>
 #include <InetConstants.au3>
-#include "Updater_lib.au3"
+#include "Updater_lib2.au3"
 
 ; ======================================================================================================================
 ; Bluetooth Quick Connect  (v2)
@@ -51,18 +51,7 @@ TraySetClick($TRAY_CLICK_SECONDARYDOWN)
 
 
 
-; ----------------------------------------------------------------------------------------------------------------------
-; Updater - GitHub based
-; ----------------------------------------------------------------------------------------------------------------------
-; This updater no longer uses a shared network folder. It reads the latest version from GitHub version.txt,
-; downloads the published Toolbox.exe only when a newer version is available, then lets Updater.exe replace the file.
-Global Const $g_sGitHubDefaultRawBase = "https://raw.githubusercontent.com/fzambroni/BluetoothQuickConnect/main"
-Global $g_sGitHubRawBase = IniRead(@ScriptDir & "\settings.ini", "Update", "github_raw_base", $g_sGitHubDefaultRawBase)
-If StringStripWS($g_sGitHubRawBase, 3) = "" Then $g_sGitHubRawBase = $g_sGitHubDefaultRawBase
-
-; Keep settings.ini explicit and self-documenting. The old [Update] path entry is intentionally ignored.
-IniWrite(@ScriptDir & "\settings.ini", "Update", "source", "github")
-IniWrite(@ScriptDir & "\settings.ini", "Update", "github_raw_base", $g_sGitHubRawBase)
+Global $GitHubAppName = "BluetoothQuickConnect"
 
 ; Skip automatic update checks when running the .au3 directly from SciTE/dev mode.
 If Not StringInStr(StringLower(@ScriptName), ".au3") Then
