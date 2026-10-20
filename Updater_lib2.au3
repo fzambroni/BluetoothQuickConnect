@@ -6,7 +6,7 @@
 ; COM error handler (catches $oConn.Execute failures instead of crashing)
 Global $g_oComErr = ObjEvent("AutoIt.Error", "_ComErrorHandler")
 Global $g_sLastComError = ""
-Global $GitHubAppName
+Global $GitHubAppName = "BluetoothQuickConnect"
 
 ; ----------------------------------------------------------------------------------------------------------------------
 ; Updater - GitHub based
